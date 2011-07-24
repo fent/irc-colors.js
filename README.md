@@ -31,8 +31,8 @@ Colors
 * <span style="color:navy">**navy**</span>
 * <span style="color:green">**green**</span>
 * <span style="color:red">**red**</span>
-* <span style="color:brown">**brown**</span>
-* <span style="color:purple">**purple**</span>
+* <span style="color:brown">**brown (maroon)**</span>
+* <span style="color:purple">**purple (violet)**</span>
 * <span style="color:olive">**olive**</span>
 * <span style="color:yellow">**yellow**</span>
 * <span style="color:lime">**light green (lime)**</span>
