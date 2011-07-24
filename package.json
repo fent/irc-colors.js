@@ -12,7 +12,10 @@
     "name": "fent",
     "url": "https://github.com/fent"
   },
-  "main": "./irc-colors.js",
+  "main": "./lib/irc-colors.js",
+  "directories": {
+    "lib": "./lib"
+  },
   "engines": {
     "node": "*"
   },
