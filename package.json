@@ -2,22 +2,22 @@
   "name": "irc-colors",
   "description": "Color and formatting for irc made easy.",
   "keywords": ["irc", "color", "colour"],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/fent/irc-colors.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/fent/irc-colors.js.git"
   },
-  "author": {
-    "name": "fent",
-    "url": "https://github.com/fent"
-  },
+  "author": "fent (https://github.com/fent)",
   "main": "./lib/irc-colors.js",
   "directories": {
     "lib": "./lib"
   },
   "engines": {
     "node": "*"
+  },
+  "devDependencies" : {
+    "irc-js": ">=0.2.26"
   },
   "licenses": [ {
     "type": "MIT",
