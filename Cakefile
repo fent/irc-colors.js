@@ -3,3 +3,7 @@ exec = require('child_process').exec
 task 'build', ->
   exec 'coffee -o lib -c src/*.coffee', (err) ->
     console.log err if err
+
+task 'watch', ->
+  exec 'coffee -w -o lib -c src/*.coffee', (err) ->
+    console.log err if err
