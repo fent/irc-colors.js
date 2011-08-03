@@ -26,22 +26,7 @@ Global syntax was inspired by [colors.js](https://github.com/Marak/colors.js) an
 
 Colors
 --------------
-* <span style="color:white;background-color:black">**white**</span>
-* <span style="color:black">**black**</span>
-* <span style="color:navy">**navy**</span>
-* <span style="color:green">**green**</span>
-* <span style="color:red">**red**</span>
-* <span style="color:brown">**brown (maroon)**</span>
-* <span style="color:purple">**purple (violet)**</span>
-* <span style="color:olive">**olive**</span>
-* <span style="color:yellow">**yellow**</span>
-* <span style="color:lime">**light green (lime)**</span>
-* <span style="color:teal">**teal (blue cyan)**</span>
-* <span style="color:darkcyan">**cyan (aqua)**</span>
-* <span style="color:blue">**blue (royal)**</span>
-* <span style="color:fuchsia">**pink (light purple) (fuchsia)**</span>
-* <span style="color:gray">**gray (grey)**</span>
-* <span style="color:silver">**light gray (light grey) (silver)**</span>
+![colors](http://i.imgur.com/l6cMj.png)
 
 Original name or alternate can be used, without spaces
 
