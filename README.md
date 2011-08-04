@@ -49,5 +49,5 @@ Installation
 ------------
 Using npm:
 
-    $ npm install irc-colors
+    npm install irc-colors
 
