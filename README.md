@@ -1,3 +1,9 @@
+Install
+------------
+
+    npm install irc-colors
+
+
 Usage
 ------------------
 
@@ -43,10 +49,4 @@ Styles
 Extras
 -----------
 * **<span style="color:red">r</span><span style="color:orange">a</span><span style="color:yellow">i</span><span style="color:green">n</span><span style="color:blue">b</span><span style="color:navy">o</span><span style="color:purple">w</span>**
-
-
-Install
-------------
-
-    npm install irc-colors
 
