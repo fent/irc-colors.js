@@ -32,7 +32,7 @@ Global syntax was inspired by [colors.js](https://github.com/Marak/colors.js) an
 
 Colors
 --------------
-![colors](http://i.imgur.com/l6cMj.png)
+![colors](https://github.com/fent/irc-colors.js/raw/master/img/colors.png)
 
 Original name or alternate can be used, without spaces
 
@@ -41,12 +41,10 @@ Original name or alternate can be used, without spaces
 
 Styles
 ------------
-* **bold**
-* *italic*
-* <u>underline</u>
+![styles](https://github.com/fent/irc-colors.js/raw/master/img/styles.png)
 
 
 Extras
 -----------
-* **<span style="color:red">r</span><span style="color:orange">a</span><span style="color:yellow">i</span><span style="color:green">n</span><span style="color:blue">b</span><span style="color:navy">o</span><span style="color:purple">w</span>**
+![extras](https://github.com/fent/irc-colors.js/raw/master/img/extras.png)
 
