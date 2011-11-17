@@ -1,14 +1,8 @@
-Install
-------------
-
-    npm install irc-colors
-
-
 Usage
 ------------------
 
 ```javascript
-c = require('irc-colors');
+var c = require('irc-colors');
 ...
 ircbot.say('#chan', c.blue('hello everyone')); // prints blue text
 ircbot.say('#chan', c.underline.red('WARNING')); // can be chained
@@ -52,3 +46,17 @@ Extras
 -----------
 ![extras](https://github.com/fent/irc-colors.js/raw/master/img/extras.png)
 
+
+Install
+------------
+
+    npm install irc-colors
+
+
+Tests
+-----------
+Tests are written with [vows](http://vowsjs.org/)
+
+```bash
+npm test
+```
