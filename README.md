@@ -1,5 +1,9 @@
-Usage
-------------------
+# irc.colors.js [![Build Status](https://secure.travis-ci.org/fent/irc-colors.js.png)](http://travis-ci.org/fent/irc-colors.js)
+
+Easily use colored output and formatting in your irc bots.
+
+
+# Usage
 
 ```javascript
 var c = require('irc-colors');
@@ -28,8 +32,8 @@ ircbot.say('#chan', 'etc etc'.irc.underline.grey.bgblack()) // chains work too
 Global syntax was inspired by [colors.js](https://github.com/Marak/colors.js) and because of that, there's possibility that you might want to use that module along with this one. That's why the *irc* property of a String needs to be called first to use the formatting functions.
 
 
-Colors
---------------
+## Colors
+
 ![colors](https://github.com/fent/irc-colors.js/raw/master/img/colors.png)
 
 Original name or alternate can be used, without spaces
@@ -37,26 +41,29 @@ Original name or alternate can be used, without spaces
     bot.say('#chat', c.bluecyan('hi'));
 
 
-Styles
-------------
+## Styles
+
 ![styles](https://github.com/fent/irc-colors.js/raw/master/img/styles.png)
 
 
-Extras
------------
+## Extras
+
 ![extras](https://github.com/fent/irc-colors.js/raw/master/img/extras.png)
 
 
-Install
-------------
+# Install
 
     npm install irc-colors
 
 
-Tests
------------
+# Tests
 Tests are written with [vows](http://vowsjs.org/)
 
 ```bash
 npm test
 ```
+
+
+# License
+
+MIT
