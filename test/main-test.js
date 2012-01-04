@@ -1,7 +1,6 @@
 var vows   = require('vows')
   , assert = require('assert')
-  ,      c = require('../lib/irc-colors.js')
-  ;
+  ,      c = require('..')
 
 // activate global syntax
 // modifies the String prototype for a sugary syntax
