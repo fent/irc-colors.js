@@ -18,6 +18,9 @@
   "engines": {
     "node": "*"
   },
+  "dependencies": {
+    "hashish": "0.0.x"
+  },
   "devDependencies" : {
     "vows": "0.5.x"
   },
