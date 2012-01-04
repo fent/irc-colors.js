@@ -10,7 +10,7 @@
   "author": "fent (https://github.com/fent)",
   "main": "./lib/irc-colors.js",
   "scripts": {
-    "test": "vows test/*.js --spec"
+    "test": "vows test/*-test.js --spec"
   },
   "directories": {
     "lib": "./lib"
@@ -19,7 +19,7 @@
     "node": "*"
   },
   "devDependencies" : {
-    "vows": ">=0.5.13"
+    "vows": "0.5.x"
   },
   "licenses": [ {
     "type": "MIT",
