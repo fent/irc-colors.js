@@ -44,7 +44,6 @@ var tests = {
 
 var regular = topicMacro(true)
   , globalSyntax = topicMacro(false)
-  ;
 
 
 for (var key in tests) {
@@ -59,6 +58,6 @@ for (var key in tests) {
 }
 
 vows.describe('Test').addBatch({
-  'Using regular syntax': regular,
-  'Using global syntax': globalSyntax
+    'Using regular syntax': regular
+  , 'Using global syntax': globalSyntax
 }).export(module);
