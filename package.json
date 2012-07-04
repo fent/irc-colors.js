@@ -19,9 +19,6 @@
   "directories": {
     "lib": "./lib"
   },
-  "engines": {
-    "node": "*"
-  },
   "dependencies": {
     "hashish": "0.0.x"
   },
