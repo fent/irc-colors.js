@@ -50,6 +50,22 @@ Original name or alternate can be used, without spaces
 
 ![extras](https://github.com/fent/irc-colors.js/raw/master/img/extras.png)
 
+## Strip
+
+You can also strip out any colors/style from IRC messages.
+
+* `stripColors`
+* `stripStyle`
+* `stripColorsAndStyle`
+
+```js
+var c = require('irc-colors');
+
+ircbot.on('message', function(from, message) {
+  console.log(c.stripColorsAndStyle(message));
+});
+```
+
 
 # Install
 
