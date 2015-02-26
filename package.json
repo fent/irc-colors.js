@@ -20,10 +20,10 @@
     "lib": "./lib"
   },
   "dependencies": {
-    "hashish": "0.0.x"
+    "hashish": "~0.0.4"
   },
   "devDependencies": {
-    "vows": "~0.7.0"
+    "vows": "*"
   },
   "licenses": [
     {
