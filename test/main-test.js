@@ -34,19 +34,19 @@ var topicMacro = function(reg) {
 };
 
 var tests = {
-  'blue'                             : [txt, '\x0312'           + txt + '\x03'],
-  'white'                            : [txt, '\x0300'           + txt + '\x03'],
-  'blue.white'                       : [txt, '\x0300\x0312'     + txt + '\x03\x03'],
+  'blue'                             : [txt, '\x0312\u200B'           + txt + '\x03'],
+  'white'                            : [txt, '\x0300\u200B'           + txt + '\x03'],
+  'blue.white'                       : [txt, '\x0300\u200B\x0312\u200B'     + txt + '\x03\x03'],
   'bold'                             : [txt, '\x02'             + txt + '\x02'],
-  'bold.grey'                        : [txt, '\x0314\x02'       + txt + '\x02\x03'],
+  'bold.grey'                        : [txt, '\x0314\u200B\x02'       + txt + '\x02\x03'],
   'underline'                        : [txt, '\x1F'             + txt + '\x1F'],
-  'green.underline'                  : [txt, '\x1F\x0303'       + txt + '\x03\x1F'],
-  'bold.white.black'                 : [txt, '\x0301\x0300\x02' + txt + '\x02\x03\x03'],
-  'white.black.italic'               : [txt, '\x16\x0301\x0300' + txt + '\x03\x03\x16'],
+  'green.underline'                  : [txt, '\x1F\x0303\u200B'       + txt + '\x03\x1F'],
+  'bold.white.black'                 : [txt, '\x0301\u200B\x0300\u200B\x02' + txt + '\x02\x03\x03'],
+  'white.black.italic'               : [txt, '\x16\x0301\u200B\x0300\u200B' + txt + '\x03\x03\x16'],
   'bggray'                           : [txt, '\x0301,14'        + txt + '\x03'],
-  'rainbow'                          : ['hello', '\x0304h\x03\x0307e\x03\x0308l\x03\x0303l\x03\x0312o\x03'],
+  'rainbow'                          : ['hello', '\x0304\u200Bh\x03\x0307\u200Be\x03\x0308\u200Bl\x03\x0303\u200Bl\x03\x0312\u200Bo\x03'],
   'rainbow.stripColors'              : ['hello', 'hello'],
-  'bold.white.black.stripStyle'      : [txt, '\x0301\x0300' + txt + '\x03\x03'],
+  'bold.white.black.stripStyle'      : [txt, '\x0301\u200B\x0300\u200B' + txt + '\x03\x03'],
   'rainbow.bold.stripColorsAndStyle' : ['hello', 'hello']
 };
 
