@@ -1,6 +1,8 @@
-# irc.colors.js [![Build Status](https://secure.travis-ci.org/fent/irc-colors.js.png)](http://travis-ci.org/fent/irc-colors.js)
+# irc.colors.js
 
 Easily use colored output and formatting in your irc bots.
+
+[![Build Status](https://secure.travis-ci.org/fent/irc-colors.js.png)](http://travis-ci.org/fent/irc-colors.js) [![Dependency Status](https://gemnasium.com/fent/irc-colors.js.svg)](https://gemnasium.com/fent/irc-colors.js)
 
 
 # Usage
