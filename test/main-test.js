@@ -7,7 +7,7 @@ var      c = require('..');
 c.global();
 
 
-var txt = 'teeeeeest me';
+var txt = 'k';
 var topicMacro = function(reg) {
   return {
     topic: function() {
@@ -33,32 +33,40 @@ var topicMacro = function(reg) {
   };
 };
 
+var zero = c.bold('');
 var tests = {
-  'blue'                             : [txt, '\x0312\u200B'           + txt + '\x03'],
-  'white'                            : [txt, '\x0300\u200B'           + txt + '\x03'],
-  'blue.white'                       : [txt, '\x0300\u200B\x0312\u200B'     + txt + '\x03\x03'],
+  'blue'                             : [txt, '\x0312'         + zero + txt + '\x03'],
+  'white'                            : [txt, '\x0300'         + zero + txt + '\x03'],
+  'blue.white'                       : [txt, '\x0300' + zero + '\x0312' + zero     + txt + '\x03\x03'],
   'bold'                             : [txt, '\x02'             + txt + '\x02'],
-  'bold.grey'                        : [txt, '\x0314\u200B\x02'       + txt + '\x02\x03'],
+  'bold.grey'                        : [txt, '\x0314' + zero + '\x02'       + txt + '\x02\x03'],
   'underline'                        : [txt, '\x1F'             + txt + '\x1F'],
-  'green.underline'                  : [txt, '\x1F\x0303\u200B'       + txt + '\x03\x1F'],
-  'bold.white.black'                 : [txt, '\x0301\u200B\x0300\u200B\x02' + txt + '\x02\x03\x03'],
-  'white.black.italic'               : [txt, '\x16\x0301\u200B\x0300\u200B' + txt + '\x03\x03\x16'],
+  'green.underline'                  : [txt, '\x1F\x0303'     + zero + txt + '\x03\x1F'],
+  'bold.white.black'                 : [txt, '\x0301' + zero + '\x0300' + zero + '\x02' + txt + '\x02\x03\x03'],
+  'white.black.italic'               : [txt, '\x16\x0301' + zero + '\x0300' + zero + txt + '\x03\x03\x16'],
   'bggray'                           : [txt, '\x0301,14'        + txt + '\x03'],
-  'rainbow'                          : ['hello', '\x0304\u200Bh\x03\x0307\u200Be\x03\x0308\u200Bl\x03\x0303\u200Bl\x03\x0312\u200Bo\x03'],
+  'rainbow'                          : ['hello', '\x0304' + zero + 'h\x03\x0307' + zero + 'e\x03\x0308' + zero + 'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03'],
   'rainbow.stripColors'              : ['hello', 'hello'],
-  'bold.white.black.stripStyle'      : [txt, '\x0301\u200B\x0300\u200B' + txt + '\x03\x03'],
+  'bold.black.stripStyle'      : [txt, '\x0301' + zero + txt + '\x03'],
+  'black.bold.stripStyle'      : [txt, '\x0301' + zero + txt + '\x03'],
   'rainbow.bold.stripColorsAndStyle' : ['hello', 'hello']
 };
 
 var regular = topicMacro(true);
 var globalSyntax = topicMacro(false);
 
+function equal(expectedStr, gotStr) {
+  var expectedBuf = new Buffer(expectedStr, 'utf8');
+  var gotBuf = new Buffer(gotStr, 'utf8');
+  assert.deepEqual(expectedBuf, gotBuf);
+}
+
 function test(key) {
   regular[key] = function(topic) {
-    assert.equal(topic[key], tests[key][1]);
+    equal(topic[key], tests[key][1]);
   };
   globalSyntax[key] = function(topic) {
-    assert.equal(topic[key], tests[key][1]);
+    equal(topic[key], tests[key][1]);
   };
 }
 
