@@ -2,12 +2,70 @@ var vows   = require('vows');
 var assert = require('assert');
 var      c = require('..');
 
-// activate global syntax
-// modifies the String prototype for a sugary syntax
+// Activate global syntax.
+// Modifies the String prototype for a sugary syntax.
 c.global();
 
+var txt = 'test me';
+var zero = c.bold('');
+var tests = {
+  'blue': [
+    txt,
+    '\x0312' + zero + txt + '\x03'
+  ],
+  'white': [
+    txt,
+    '\x0300' + zero + txt + '\x03'
+  ],
+  'blue.white': [
+    txt,
+    '\x0300' + zero + '\x0312' + zero     + txt + '\x03\x03'
+  ],
+  'bold': [
+    txt,
+    '\x02' + txt + '\x02'
+  ],
+  'bold.grey': [
+    txt,
+    '\x0314' + zero + '\x02'       + txt + '\x02\x03'
+  ],
+  'underline': [
+    txt,
+    '\x1F' + txt + '\x1F'
+  ],
+  'green.underline': [
+    txt,
+    '\x1F\x0303' + zero + txt + '\x03\x1F'
+  ],
+  'bold.white.black': [
+    txt,
+    '\x0301' + zero + '\x0300' + zero + '\x02' + txt + '\x02\x03\x03'
+  ],
+  'white.black.italic': [
+    txt,
+    '\x16\x0301' + zero + '\x0300' + zero + txt + '\x03\x03\x16'
+  ],
+  'bggray': [
+    txt,
+    '\x0301,14' + txt + '\x03'
+  ],
+  'rainbow': [
+    'hello',
+    '\x0304' + zero + 'h\x03\x0307' + zero + 'e\x03\x0308' + zero +
+      'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03'
+  ],
+  'rainbow.stripColors': ['hello', 'hello'],
+  'bold.black.stripStyle': [
+    txt,
+    '\x0301' + zero + txt + '\x03'
+  ],
+  'black.bold.stripStyle': [
+    txt,
+    '\x0301' + zero + txt + '\x03'
+  ],
+  'rainbow.bold.stripColorsAndStyle': ['hello', 'hello']
+};
 
-var txt = 'k';
 var topicMacro = function(reg) {
   return {
     topic: function() {
@@ -15,9 +73,8 @@ var topicMacro = function(reg) {
 
       for (var key in tests) {
         if (tests.hasOwnProperty(key)) {
-          var fn = reg ? c : tests[key][0].irc
-            , s = key.split('.')
-            ;
+          var fn = reg ? c : tests[key][0].irc;
+          var s = key.split('.');
 
           for (var i in s) {
             if (s.hasOwnProperty(i)) {
@@ -31,25 +88,6 @@ var topicMacro = function(reg) {
       return obj;
     }
   };
-};
-
-var zero = c.bold('');
-var tests = {
-  'blue'                             : [txt, '\x0312'         + zero + txt + '\x03'],
-  'white'                            : [txt, '\x0300'         + zero + txt + '\x03'],
-  'blue.white'                       : [txt, '\x0300' + zero + '\x0312' + zero     + txt + '\x03\x03'],
-  'bold'                             : [txt, '\x02'             + txt + '\x02'],
-  'bold.grey'                        : [txt, '\x0314' + zero + '\x02'       + txt + '\x02\x03'],
-  'underline'                        : [txt, '\x1F'             + txt + '\x1F'],
-  'green.underline'                  : [txt, '\x1F\x0303'     + zero + txt + '\x03\x1F'],
-  'bold.white.black'                 : [txt, '\x0301' + zero + '\x0300' + zero + '\x02' + txt + '\x02\x03\x03'],
-  'white.black.italic'               : [txt, '\x16\x0301' + zero + '\x0300' + zero + txt + '\x03\x03\x16'],
-  'bggray'                           : [txt, '\x0301,14'        + txt + '\x03'],
-  'rainbow'                          : ['hello', '\x0304' + zero + 'h\x03\x0307' + zero + 'e\x03\x0308' + zero + 'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03'],
-  'rainbow.stripColors'              : ['hello', 'hello'],
-  'bold.black.stripStyle'      : [txt, '\x0301' + zero + txt + '\x03'],
-  'black.bold.stripStyle'      : [txt, '\x0301' + zero + txt + '\x03'],
-  'rainbow.bold.stripColorsAndStyle' : ['hello', 'hello']
 };
 
 var regular = topicMacro(true);
@@ -77,6 +115,6 @@ for (var key in tests) {
 }
 
 vows.describe('Test').addBatch({
-    'Using regular syntax': regular
-  , 'Using global syntax': globalSyntax
+  'Using regular syntax': regular,
+  'Using global syntax': globalSyntax
 }).export(module);
