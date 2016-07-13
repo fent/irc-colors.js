@@ -49,10 +49,15 @@ var tests = {
     txt,
     '\x0301,14' + txt + '\x03'
   ],
+  'blue.bgblack': [
+    txt,
+    '\x0312,01' + txt + '\x03'
+  ],
   'rainbow': [
-    'hello',
+    'hello u',
     '\x0304' + zero + 'h\x03\x0307' + zero + 'e\x03\x0308' + zero +
-      'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03'
+    'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03 \x0302' + zero +
+    'u\x03'
   ],
   'rainbow.stripColors': ['hello', 'hello'],
   'bold.black.stripStyle': [
