@@ -19,9 +19,6 @@
   "directories": {
     "lib": "./lib"
   },
-  "dependencies": {
-    "hashish": "~0.0.4"
-  },
   "devDependencies": {
     "istanbul": "*",
     "vows": "*"
