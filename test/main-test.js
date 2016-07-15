@@ -17,10 +17,6 @@ var tests = {
     txt,
     '\x0300' + zero + txt + '\x03'
   ],
-  'blue.white': [
-    txt,
-    '\x0300' + zero + '\x0312' + zero     + txt + '\x03\x03'
-  ],
   'bold': [
     txt,
     '\x02' + txt + '\x02'
@@ -37,13 +33,13 @@ var tests = {
     txt,
     '\x1F\x0303' + zero + txt + '\x03\x1F'
   ],
-  'bold.white.black': [
+  'bold.white': [
     txt,
-    '\x0301' + zero + '\x0300' + zero + '\x02' + txt + '\x02\x03\x03'
+    '\x0300' + zero + '\x02' + txt + '\x02\x03'
   ],
-  'white.black.italic': [
+  'white.italic': [
     txt,
-    '\x16\x0301' + zero + '\x0300' + zero + txt + '\x03\x03\x16'
+    '\x16\x0300' + zero + txt + '\x03\x16'
   ],
   'bggray': [
     txt,
@@ -59,16 +55,19 @@ var tests = {
     'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03 \x0302' + zero +
     'u\x03'
   ],
-  'rainbow.stripColors': ['hello', 'hello'],
-  'bold.black.stripStyle': [
-    txt,
+  'stripColors': [
+    '\x0304' + zero + 'h\x03\x0307' + zero + 'e\x03\x0308' + zero +
+    'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03',
+    'hello'],
+  'stripStyle': [
+    '\x0301' + zero + '\x02' + txt + '\x02\x03',
     '\x0301' + zero + txt + '\x03'
   ],
-  'black.bold.stripStyle': [
-    txt,
-    '\x0301' + zero + txt + '\x03'
-  ],
-  'rainbow.bold.stripColorsAndStyle': ['hello', 'hello']
+  'stripColorsAndStyle': [
+    '\x02\x0304' + zero + 'h\x03\x0307' + zero + 'e\x03\x0308' + zero +
+    'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03\x02',
+    'hello'
+  ]
 };
 
 var topicMacro = function(reg) {
