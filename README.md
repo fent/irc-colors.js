@@ -31,7 +31,7 @@ ircbot.say('#chan', 'hi everyone!'.irc.green.bold()); // prints green bold text
 ircbot.say('#chan', 'etc etc'.irc.underline.grey.bgblack()) // chains work too
 ```
 
-Global syntax was inspired by [colors.js](https://github.com/Marak/colors.js) and because of that, there's possibility that you might want to use that module along with this one. That's why the *irc* property of a String needs to be called first to use the formatting functions.
+Global syntax was inspired by [colors.js](https://github.com/marak/colors.js) and because of that, there's possibility that you might want to use that module along with this one. That's why the *irc* property of a String needs to be called first to use the formatting functions.
 
 
 ## Colors
