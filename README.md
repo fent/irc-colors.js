@@ -39,7 +39,7 @@ Global syntax was inspired by [colors.js](https://github.com/marak/colors.js) an
 
 ## Colors
 
-![colors](https://github.com/fent/irc-colors.js/raw/master/img/colors.png)
+![colors](img/colors.png)
 
 Original name or alternate can be used, without spaces
 
@@ -48,12 +48,12 @@ Original name or alternate can be used, without spaces
 
 ## Styles
 
-![styles](https://github.com/fent/irc-colors.js/raw/master/img/styles.png)
+![styles](img/styles.png)
 
 
 ## Extras
 
-![extras](https://github.com/fent/irc-colors.js/raw/master/img/extras.png)
+![extras](img/extras.png)
 
 ## Strip
 
