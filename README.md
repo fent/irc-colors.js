@@ -2,7 +2,10 @@
 
 Easily use colored output and formatting in your irc bots.
 
-[![Build Status](https://secure.travis-ci.org/fent/irc-colors.js.png)](http://travis-ci.org/fent/irc-colors.js) [![Dependency Status](https://gemnasium.com/fent/irc-colors.js.svg)](https://gemnasium.com/fent/irc-colors.js)
+[![Build Status](https://secure.travis-ci.org/fent/irc-colors.js.png)](http://travis-ci.org/fent/irc-colors.js)
+[![Dependency Status](https://gemnasium.com/fent/irc-colors.js.svg)](https://gemnasium.com/fent/irc-colors.js)
+[![codecov](https://codecov.io/gh/fent/irc-colors.js/branch/master/graph/badge.svg)](https://codecov.io/gh/fent/irc-colors.js)
+
 
 
 # Usage
