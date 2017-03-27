@@ -59,9 +59,41 @@ var tests = {
     '\x0304' + zero + 'h\x03\x0307' + zero + 'e\x03\x0308' + zero +
     'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03',
     'hello'],
+  'red.stripColors': ['hello', 'hello'],
+  'bgblue.stripColors': ['hello', 'hello'],
+  'red.bold.stripColors': [
+    'hello',
+    '\x02hello\x02'
+  ],
+  'bold.red.stripColors': [
+    'hello',
+    '\x02hello\x02'
+  ],
   'stripStyle': [
     '\x0301' + zero + '\x02' + txt + '\x02\x03',
     '\x0301' + zero + txt + '\x03'
+  ],
+  'blue.stripStyle': [
+    'hello',
+    '\x0312' + zero + 'hello\x03',
+  ],
+  'blue.bgblack.stripStyle': [
+    'hello',
+    '\x0312,01' + 'hello\x03'
+  ],
+  'bold.stripStyle': ['hello', 'hello'],
+  'bold.blue.stripStyle': [
+    'hello',
+    '\x0312' + zero + 'hello\x03'
+  ],
+  'blue.bold.stripStyle': [
+    'hello',
+    '\x0312' + zero + 'hello\x03'
+  ],
+  'rainbow.stripStyle': [
+    'hello',
+    '\x0304' + zero + 'h\x03\x0307' + zero + 'e\x03\x0308' + zero +
+    'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03'
   ],
   'stripColorsAndStyle': [
     '\x02\x0304' + zero + 'h\x03\x0307' + zero + 'e\x03\x0308' + zero +
@@ -76,18 +108,14 @@ var topicMacro = function(reg) {
       var obj = {};
 
       for (var key in tests) {
-        if (tests.hasOwnProperty(key)) {
-          var fn = reg ? c : tests[key][0].irc;
-          var s = key.split('.');
+        var fn = reg ? c : tests[key][0].irc;
+        var s = key.split('.');
 
-          for (var i in s) {
-            if (s.hasOwnProperty(i)) {
-              fn = fn[s[i]];
-            }
-          }
-
-          obj[key] = reg ? fn(tests[key][0]) : fn();
+        for (var i in s) {
+          fn = fn[s[i]];
         }
+
+        obj[key] = reg ? fn(tests[key][0]) : fn();
       }
       return obj;
     }
@@ -113,9 +141,7 @@ function test(key) {
 }
 
 for (var key in tests) {
-  if (tests.hasOwnProperty(key)) {
-    test(key);
-  }
+  test(key);
 }
 
 vows.describe('Test').addBatch({
