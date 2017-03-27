@@ -13,6 +13,9 @@
   },
   "author": "fent (https://github.com/fent)",
   "main": "./lib/irc-colors.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "test": "istanbul cover vows -- --spec test/*-test.js"
   },
