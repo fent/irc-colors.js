@@ -11,7 +11,7 @@ Easily use colored output and formatting in your irc bots.
 # Usage
 
 ```javascript
-var c = require('irc-colors');
+const c = require('irc-colors');
 ...
 ircbot.say('#chan', c.blue('hello everyone')); // prints blue text
 ircbot.say('#chan', c.underline.red('WARNING')); // can be chained
@@ -64,7 +64,7 @@ You can also strip out any colors/style from IRC messages.
 * `stripColorsAndStyle`
 
 ```js
-var c = require('irc-colors');
+const c = require('irc-colors');
 
 ircbot.on('message', function(from, message) {
   console.log(c.stripColorsAndStyle(message));
