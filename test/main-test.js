@@ -70,7 +70,7 @@ var tests = {
     '\x02hello\x02'
   ],
   'stripStyle': [
-    '\x0301' + zero + '\x02' + txt + '\x02\x03',
+    '\x0301' + zero + '\x02' + txt + '\x0F\x03',
     '\x0301' + zero + txt + '\x03'
   ],
   'blue.stripStyle': [
@@ -96,9 +96,8 @@ var tests = {
     'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03'
   ],
   'stripColorsAndStyle': [
-    '\x02\x0304' + zero + 'h\x03\x0307' + zero + 'e\x03\x0308' + zero +
-    'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03\x02',
-    'hello'
+    '\x1Fone\x0F \x0312' + zero + '\x02hello\x03',
+    'one hello'
   ]
 };
 
