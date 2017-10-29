@@ -1,14 +1,14 @@
-var vows   = require('vows');
-var assert = require('assert');
-var      c = require('..');
+const vows   = require('vows');
+const assert = require('assert');
+const c      = require('..');
 
 // Activate global syntax.
 // Modifies the String prototype for a sugary syntax.
 c.global();
 
-var txt = 'test me';
-var zero = c.bold('');
-var tests = {
+const txt = 'test me';
+const zero = c.bold('');
+const tests = {
   'blue': [
     txt,
     '\x0312' + zero + txt + '\x03'
@@ -101,9 +101,9 @@ var tests = {
   ]
 };
 
-var topicMacro = function(reg) {
+const topicMacro = (reg) => {
   return {
-    topic: function() {
+    topic: () => {
       var obj = {};
 
       for (var key in tests) {
@@ -121,8 +121,8 @@ var topicMacro = function(reg) {
   };
 };
 
-var regular = topicMacro(true);
-var globalSyntax = topicMacro(false);
+const regular = topicMacro(true);
+const globalSyntax = topicMacro(false);
 
 function equal(expectedStr, gotStr) {
   var expectedBuf = new Buffer(expectedStr, 'utf8');
@@ -131,10 +131,10 @@ function equal(expectedStr, gotStr) {
 }
 
 function test(key) {
-  regular[key] = function(topic) {
+  regular[key] = (topic) => {
     equal(topic[key], tests[key][1]);
   };
-  globalSyntax[key] = function(topic) {
+  globalSyntax[key] = (topic) => {
     equal(topic[key], tests[key][1]);
   };
 }
