@@ -66,7 +66,7 @@ You can also strip out any colors/style from IRC messages.
 ```js
 const c = require('irc-colors');
 
-ircbot.on('message', function(from, message) {
+ircbot.on('message', (from, message) => {
   console.log(c.stripColorsAndStyle(message));
 });
 ```
