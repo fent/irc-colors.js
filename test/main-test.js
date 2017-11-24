@@ -39,7 +39,7 @@ const tests = {
   ],
   'white.italic': [
     txt,
-    '\x16\x0300' + zero + txt + '\x03\x16'
+    '\x1D\x0300' + zero + txt + '\x03\x1D'
   ],
   'bggray': [
     txt,
