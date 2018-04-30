@@ -125,8 +125,8 @@ const regular = topicMacro(true);
 const globalSyntax = topicMacro(false);
 
 function equal(expectedStr, gotStr) {
-  var expectedBuf = new Buffer(expectedStr, 'utf8');
-  var gotBuf = new Buffer(gotStr, 'utf8');
+  var expectedBuf = Buffer.from(expectedStr, 'utf8');
+  var gotBuf = Buffer.from(gotStr, 'utf8');
   assert.deepEqual(expectedBuf, gotBuf);
 }
 
