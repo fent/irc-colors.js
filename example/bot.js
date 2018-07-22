@@ -1,8 +1,8 @@
 const irc = require('irc');
 const c = require('../');
 
-var channel = '#colortest';
-var client = new irc.Client('bethere.fdfnet.net', 'colorbot1234', {
+let channel = '#colortest';
+let client = new irc.Client('bethere.fdfnet.net', 'colorbot1234', {
   channels: [channel]
 });
 

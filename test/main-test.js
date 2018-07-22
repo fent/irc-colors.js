@@ -104,13 +104,13 @@ const tests = {
 const topicMacro = (reg) => {
   return {
     topic: () => {
-      var obj = {};
+      let obj = {};
 
-      for (var key in tests) {
-        var fn = reg ? c : tests[key][0].irc;
-        var s = key.split('.');
+      for (let key in tests) {
+        let fn = reg ? c : tests[key][0].irc;
+        let s = key.split('.');
 
-        for (var i in s) {
+        for (let i in s) {
           fn = fn[s[i]];
         }
 
@@ -125,8 +125,8 @@ const regular = topicMacro(true);
 const globalSyntax = topicMacro(false);
 
 function equal(expectedStr, gotStr) {
-  var expectedBuf = Buffer.from(expectedStr, 'utf8');
-  var gotBuf = Buffer.from(gotStr, 'utf8');
+  let expectedBuf = Buffer.from(expectedStr, 'utf8');
+  let gotBuf = Buffer.from(gotStr, 'utf8');
   assert.deepEqual(expectedBuf, gotBuf);
 }
 
@@ -139,7 +139,7 @@ function test(key) {
   };
 }
 
-for (var key in tests) {
+for (let key in tests) {
   test(key);
 }
 
