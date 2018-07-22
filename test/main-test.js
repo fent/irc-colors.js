@@ -7,15 +7,20 @@ const c      = require('..');
 c.global();
 
 const txt = 'test me';
+const badtxt = ',1 hi';
 const zero = c.bold('');
 const tests = {
   'blue': [
     txt,
-    '\x0312' + zero + txt + '\x03'
+    '\x0312' + txt + '\x03'
   ],
   'white': [
     txt,
-    '\x0300' + zero + txt + '\x03'
+    '\x0300' + txt + '\x03'
+  ],
+  'red': [
+    badtxt,
+    '\x0304' + zero + badtxt + '\x03'
   ],
   'bold': [
     txt,
@@ -23,7 +28,7 @@ const tests = {
   ],
   'bold.grey': [
     txt,
-    '\x0314' + zero + '\x02'       + txt + '\x02\x03'
+    '\x0314' + '\x02' + txt + '\x02\x03'
   ],
   'underline': [
     txt,
@@ -31,15 +36,15 @@ const tests = {
   ],
   'green.underline': [
     txt,
-    '\x1F\x0303' + zero + txt + '\x03\x1F'
+    '\x1F\x0303' + txt + '\x03\x1F'
   ],
   'bold.white': [
     txt,
-    '\x0300' + zero + '\x02' + txt + '\x02\x03'
+    '\x0300' + '\x02' + txt + '\x02\x03'
   ],
   'white.italic': [
     txt,
-    '\x1D\x0300' + zero + txt + '\x03\x1D'
+    '\x1D\x0300' + txt + '\x03\x1D'
   ],
   'bggray': [
     txt,
@@ -49,15 +54,19 @@ const tests = {
     txt,
     '\x0312,01' + txt + '\x03'
   ],
+  'red.bgblack': [
+    badtxt,
+    '\x0304,01' + badtxt + '\x03'
+  ],
   'rainbow': [
     'hello u',
-    '\x0304' + zero + 'h\x03\x0307' + zero + 'e\x03\x0308' + zero +
-    'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03 \x0302' + zero +
+    '\x0304' + 'h\x03\x0307' + 'e\x03\x0308' +
+    'l\x03\x0303' + 'l\x03\x0312' + 'o\x03 \x0302' +
     'u\x03'
   ],
   'stripColors': [
-    '\x0304' + zero + 'h\x03\x0307' + zero + 'e\x03\x0308' + zero +
-    'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03',
+    '\x0304' + 'h\x03\x0307' + 'e\x03\x0308' +
+    'l\x03\x0303' + 'l\x03\x0312' + 'o\x03',
     'hello'],
   'red.stripColors': ['hello', 'hello'],
   'bgblue.stripColors': ['hello', 'hello'],
@@ -70,12 +79,12 @@ const tests = {
     '\x02hello\x02'
   ],
   'stripStyle': [
-    '\x0301' + zero + '\x02' + txt + '\x0F\x03',
-    '\x0301' + zero + txt + '\x03'
+    '\x0301' + '\x02' + txt + '\x0F\x03',
+    '\x0301' + txt + '\x03'
   ],
   'blue.stripStyle': [
     'hello',
-    '\x0312' + zero + 'hello\x03',
+    '\x0312' + 'hello\x03',
   ],
   'blue.bgblack.stripStyle': [
     'hello',
@@ -84,19 +93,19 @@ const tests = {
   'bold.stripStyle': ['hello', 'hello'],
   'bold.blue.stripStyle': [
     'hello',
-    '\x0312' + zero + 'hello\x03'
+    '\x0312' + 'hello\x03'
   ],
   'blue.bold.stripStyle': [
     'hello',
-    '\x0312' + zero + 'hello\x03'
+    '\x0312' + 'hello\x03'
   ],
   'rainbow.stripStyle': [
     'hello',
-    '\x0304' + zero + 'h\x03\x0307' + zero + 'e\x03\x0308' + zero +
-    'l\x03\x0303' + zero + 'l\x03\x0312' + zero + 'o\x03'
+    '\x0304' + 'h\x03\x0307' + 'e\x03\x0308' +
+    'l\x03\x0303' + 'l\x03\x0312' + 'o\x03'
   ],
   'stripColorsAndStyle': [
-    '\x1Fone\x0F \x0312' + zero + '\x02hello\x03',
+    '\x1Fone\x0F \x0312' + '\x02hello\x03',
     'one hello'
   ]
 };
