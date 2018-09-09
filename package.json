@@ -27,7 +27,7 @@
     "vows": "^0.8.1"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "license": "MIT"
 }
