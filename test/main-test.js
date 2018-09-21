@@ -133,20 +133,20 @@ const topicMacro = (reg) => {
 const regular = topicMacro(true);
 const globalSyntax = topicMacro(false);
 
-function equal(expectedStr, gotStr) {
+const equal = (expectedStr, gotStr) => {
   let expectedBuf = Buffer.from(expectedStr, 'utf8');
   let gotBuf = Buffer.from(gotStr, 'utf8');
   assert.deepEqual(expectedBuf, gotBuf);
-}
+};
 
-function test(key) {
+const test = (key) => {
   regular[key] = (topic) => {
     equal(topic[key], tests[key][1]);
   };
   globalSyntax[key] = (topic) => {
     equal(topic[key], tests[key][1]);
   };
-}
+};
 
 for (let key in tests) {
   test(key);
