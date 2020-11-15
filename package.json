@@ -17,7 +17,8 @@
     "lib"
   ],
   "scripts": {
-    "test": "nyc --reporter=lcov --reporter=text-summary vows --spec test/*-test.js"
+    "test": "nyc --reporter=lcov --reporter=text-summary npm run test:unit",
+    "test:unit": "vows --spec test/*-test.js"
   },
   "directories": {
     "lib": "./lib"
