@@ -17,14 +17,14 @@
     "lib"
   ],
   "scripts": {
-    "test": "istanbul cover vows -- --spec test/*-test.js"
+    "test": "nyc --reporter=lcov --reporter=text-summary vows --spec test/*-test.js"
   },
   "directories": {
     "lib": "./lib"
   },
   "devDependencies": {
-    "istanbul": "^0.4.5",
-    "vows": "^0.8.1"
+    "nyc": "^15.1.0",
+    "vows": "^0.8.3"
   },
   "engines": {
     "node": ">=6"
