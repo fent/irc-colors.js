@@ -1,5 +1,5 @@
 const vows = require('vows');
-const assert = require('assert');
+const assert = require('node:assert');
 const c = require('..');
 
 // Activate global syntax.
@@ -10,18 +10,18 @@ const txt = 'test me';
 const badtxt = ',1 hi';
 const zero = c.bold('');
 const tests = {
-  blue: [txt, '\x0312' + txt + '\x03'],
-  white: [txt, '\x0300' + txt + '\x03'],
-  red: [badtxt, '\x0304' + zero + badtxt + '\x03'],
-  bold: [txt, '\x02' + txt + '\x02'],
-  'bold.grey': [txt, '\x0314' + '\x02' + txt + '\x02\x03'],
-  underline: [txt, '\x1F' + txt + '\x1F'],
-  'green.underline': [txt, '\x1F\x0303' + txt + '\x03\x1F'],
-  'bold.white': [txt, '\x0300' + '\x02' + txt + '\x02\x03'],
-  'white.italic': [txt, '\x1D\x0300' + txt + '\x03\x1D'],
-  bggray: [txt, '\x0301,14' + txt + '\x03'],
-  'blue.bgblack': [txt, '\x0312,01' + txt + '\x03'],
-  'red.bgblack': [badtxt, '\x0304,01' + badtxt + '\x03'],
+  blue: [txt, `\x0312${txt}\x03`],
+  white: [txt, `\x0300${txt}\x03`],
+  red: [badtxt, `\x0304${zero}${badtxt}\x03`],
+  bold: [txt, `\x02${txt}\x02`],
+  'bold.grey': [txt, `\x0314\x02${txt}\x02\x03`],
+  underline: [txt, `\x1F${txt}\x1F`],
+  'green.underline': [txt, `\x1F\x0303${txt}\x03\x1F`],
+  'bold.white': [txt, `\x0300\x02${txt}\x02\x03`],
+  'white.italic': [txt, `\x1D\x0300${txt}\x03\x1D`],
+  bggray: [txt, `\x0301,14${txt}\x03`],
+  'blue.bgblack': [txt, `\x0312,01${txt}\x03`],
+  'red.bgblack': [badtxt, `\x0304,01${badtxt}\x03`],
   rainbow: [
     'hello u',
     '\x0304' +
@@ -45,7 +45,7 @@ const tests = {
   'bgblue.stripColors': ['hello', 'hello'],
   'red.bold.stripColors': ['hello', '\x02hello\x02'],
   'bold.red.stripColors': ['hello', '\x02hello\x02'],
-  stripStyle: ['\x0301' + '\x02' + txt + '\x0F\x03', '\x0301' + txt + '\x03'],
+  stripStyle: [`\x0301\x02${txt}\x0F\x03`, `\x0301${txt}\x03`],
   'blue.stripStyle': ['hello', '\x0312' + 'hello\x03'],
   'blue.bgblack.stripStyle': ['hello', '\x0312,01' + 'hello\x03'],
   'bold.stripStyle': ['hello', 'hello'],
