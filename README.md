@@ -1,6 +1,6 @@
 # irc.colors.js
 
-Easily use colored output and formatting in your irc bots.
+Color and formatting for irc made easy.
 
 [![npm](https://img.shields.io/npm/v/irc-colors)](https://www.npmjs.com/package/irc-colors)
 [![Node.js CI](https://github.com/fent/irc-colors.js/actions/workflows/nodejs.yml/badge.svg)](https://github.com/fent/irc-colors.js/actions/workflows/nodejs.yml)
