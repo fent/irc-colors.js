@@ -17,6 +17,8 @@
     "lib"
   ],
   "scripts": {
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
     "test": "nyc --reporter=lcov --reporter=text-summary npm run test:unit",
     "test:unit": "vows --spec test/*-test.js"
   },
@@ -24,6 +26,7 @@
     "lib": "./lib"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.5.15",
     "nyc": "^18.0.0",
     "vows": "^0.8.3"
   },

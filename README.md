@@ -2,8 +2,8 @@
 
 Easily use colored output and formatting in your irc bots.
 
-[![Build Status](https://secure.travis-ci.org/fent/irc-colors.js.svg)](http://travis-ci.org/fent/irc-colors.js)
-![Depfu](https://img.shields.io/depfu/fent/irc-colors.js)
+[![npm](https://img.shields.io/npm/v/irc-colors)](https://www.npmjs.com/package/irc-colors)
+[![Node.js CI](https://github.com/fent/irc-colors.js/actions/workflows/nodejs.yml/badge.svg)](https://github.com/fent/irc-colors.js/actions/workflows/nodejs.yml)
 [![codecov](https://codecov.io/gh/fent/irc-colors.js/branch/master/graph/badge.svg)](https://codecov.io/gh/fent/irc-colors.js)
 
 
