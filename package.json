@@ -12,27 +12,34 @@
     "url": "git://github.com/fent/irc-colors.js.git"
   },
   "author": "fent <fentbox@gmail.com> (https://github.com/fent)",
-  "main": "./lib/irc-colors.js",
+  "main": "./dist/irc-colors.js",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "tsc -p tsconfig.build.json",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "test": "nyc --reporter=lcov --reporter=text-summary npm run test:unit",
-    "test:unit": "vows --spec test/*-test.js"
-  },
-  "directories": {
-    "lib": "./lib"
+    "test": "nyc --extension .ts --reporter=lcov --reporter=text-summary npm run test:unit",
+    "test:unit": "mocha --require ts-node/register test/*-test.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.15",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.20.5",
+    "mocha": "^12.0.3",
     "nyc": "^18.0.0",
-    "vows": "^0.8.3"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   },
   "engines": {
     "node": ">=20"
   },
   "sideEffects": false,
-  "license": "MIT"
+  "license": "MIT",
+  "overrides": {
+    "glob": "^14.0.3",
+    "minimatch": "^11.0.3"
+  }
 }
