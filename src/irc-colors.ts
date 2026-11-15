@@ -348,29 +348,41 @@ for (const type of categoryKeys) {
   }
 }
 
+// Builds a set of global functions bound to one string, so a stored function
+// keeps coloring the string it was read from. Functions are materialized
+// lazily as properties are read, keeping the per-access cost small.
+const colorTypes = {} as Record<string, Category>;
+for (const type of categoryKeys) {
+  for (const color of allColors[type]) {
+    colorTypes[color] = type;
+  }
+}
+
+const createGlobalColors = (str: string): GlobalIrcColors =>
+  new Proxy({} as GlobalIrcColors, {
+    get(_target, prop) {
+      const type = colorTypes[prop as string];
+      if (!type) {
+        return undefined;
+      }
+
+      const colorFn = colorsModule[
+        prop as keyof IrcColors
+      ] as unknown as ColorTransform;
+      const fn = (() => colorFn(str)) as unknown as GlobalColorFunction;
+      addGetters(fn, [type]);
+      return fn;
+    },
+  });
+
 // Adds functions to global String object.
 colorsModule.global = () => {
-  let currentStr = '';
-  const irc = {} as GlobalIrcColors;
-
   Object.defineProperty(String.prototype, 'irc', {
     get(this: string) {
-      currentStr = this;
-      return irc;
+      return createGlobalColors(this);
     },
     configurable: true,
   });
-
-  for (const type of categoryKeys) {
-    for (const color of allColors[type]) {
-      const colorFn = colorsModule[
-        color as keyof IrcColors
-      ] as unknown as ColorTransform;
-      const fn = (() => colorFn(currentStr)) as unknown as GlobalColorFunction;
-      addGetters(fn, [type]);
-      (irc as unknown as Record<string, unknown>)[color] = fn;
-    }
-  }
 };
 
 export const {

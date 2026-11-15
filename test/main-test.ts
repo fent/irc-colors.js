@@ -146,6 +146,27 @@ describe('Rainbow with custom palette', () => {
   });
 });
 
+describe('Global syntax string binding', () => {
+  it('binds a stored color function to its own string', () => {
+    const redForA = 'a'.irc.red;
+    'b'.irc.red();
+    assert.equal(redForA(), c.red('a'));
+  });
+
+  it('binds a stored chain to its own string', () => {
+    const boldRedForA = 'a'.irc.bold.red;
+    'b'.irc.bold.red();
+    assert.equal(boldRedForA(), c.bold.red('a'));
+  });
+
+  it('returns undefined for non-color properties', () => {
+    assert.equal(
+      ('a'.irc as unknown as Record<string, unknown>).nope,
+      undefined,
+    );
+  });
+});
+
 describe('Strip color codes with literal commas', () => {
   it('keeps a comma after a color code without a background', () => {
     assert.equal(
