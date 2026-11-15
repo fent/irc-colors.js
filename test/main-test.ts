@@ -167,6 +167,32 @@ describe('Global syntax string binding', () => {
   });
 });
 
+describe('Background colors', () => {
+  it('replaces a background that is already applied', () => {
+    assert.equal(c.bgred(c.bgblue('x')), '\x0301,04x\x03');
+    assert.equal(c.stripColors(c.bgred(c.bgblue('x'))), 'x');
+  });
+
+  it('replaces an existing background in a leading color code', () => {
+    assert.equal(c.bgred('\x0304,05x'), '\x0304,04x');
+    assert.equal(c.stripColors(c.bgred('\x0304,05x')), 'x');
+  });
+
+  it('replaces one-digit color codes', () => {
+    assert.equal(c.bgblue('\x039,5x'), '\x039,12x');
+    assert.equal(c.bgred('\x039abc'), '\x039,04abc');
+  });
+
+  it('replaces the background across several applications', () => {
+    assert.equal(c.bggreen(c.bgred(c.bgblue('x'))), '\x0301,03x\x03');
+  });
+
+  it('keeps a protected literal comma when replacing the background', () => {
+    assert.equal(c.bgred(c.bgblue(c.red(',1 hi'))), '\x0304,04,1 hi\x03');
+    assert.equal(c.stripColors(c.bgred(c.bgblue(c.red(',1 hi')))), ',1 hi');
+  });
+});
+
 describe('Strip color codes with literal commas', () => {
   it('keeps a comma after a color code without a background', () => {
     assert.equal(

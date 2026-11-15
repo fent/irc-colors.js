@@ -144,7 +144,9 @@ for (const key of styleNames) {
 const colorChar = '\x03';
 const zeroWidthBold = styles.bold + styles.bold;
 const leadingCommaDigitPattern = /^,\d/;
-const colorCodeStr = new RegExp(`^${colorChar}\\d\\d`);
+const leadingColorCodePattern = new RegExp(
+  `^${colorChar}(?<fg>\\d{1,2})(?:,\\d{1,2})?`,
+);
 // A color code is `\x03<fg>,<bg>` where each of fg and bg is 1-2 digits.
 // The optional zero-width bold pair protects a literal leading ",\d".
 const colorCodePattern = /\x03(\d{1,2}(,\d{1,2})?)?(\x02\x02)?/g;
@@ -176,16 +178,18 @@ for (const code of Object.keys(colors)) {
   // Background.
   const bg = ((str: string) => {
     // If the string begins with a foreground color already applied,
-    // use it to save string space.
-    if (colorCodeStr.test(str)) {
-      const str2 = str.slice(3);
+    // use it to save string space and replace any existing background.
+    const match = leadingColorCodePattern.exec(str);
+    if (match?.groups) {
+      const rest = str.slice(match[0].length);
       return (
-        str.slice(0, 3) +
+        colorChar +
+        match.groups.fg +
         ',' +
         code +
-        (str2.startsWith(zeroWidthBold)
-          ? str2.slice(zeroWidthBold.length)
-          : str2)
+        (rest.startsWith(zeroWidthBold)
+          ? rest.slice(zeroWidthBold.length)
+          : rest)
       );
     }
     return `${colorChar}01,${code}${str}${colorChar}`;
