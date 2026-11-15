@@ -217,19 +217,40 @@ const defaultRainbowPalette: ForegroundColor[] = [
   'violet',
 ];
 
+// Split by grapheme so surrogate pairs, emoji sequences, and combining marks
+// are colored as one unit instead of being broken apart.
+const graphemeSegmenter = new Intl.Segmenter(undefined, {
+  granularity: 'grapheme',
+});
+
+const splitGraphemes = (str: string): string[] =>
+  Array.from(graphemeSegmenter.segment(str), ({ segment }) => segment);
+
 const custom = {
   rainbow: ((str: string, colorArr?: string[]) => {
-    const palette = (colorArr as ForegroundColor[]) || defaultRainbowPalette;
-    const len = palette.length;
-    let i = 0;
+    const palette = colorArr ?? defaultRainbowPalette;
+    if (palette.length === 0) {
+      throw new Error('Rainbow palette must contain at least one color');
+    }
 
-    return str
-      .split('')
-      .map((char) =>
-        char !== ' '
-          ? colorsModule[palette[i++ % len] as ForegroundColor](char)
-          : char,
-      )
+    // Validate the whole palette up front so an invalid entry fails even when
+    // the string is too short to reach its index.
+    const paletteFns = palette.map((color) => {
+      if (!allColors.fg.includes(color as ForegroundColor)) {
+        throw new Error(`Unknown rainbow palette color: ${color}`);
+      }
+      return colorsModule[color as ForegroundColor];
+    });
+
+    let i = 0;
+    return splitGraphemes(str)
+      .map((grapheme) => {
+        if (grapheme === ' ') {
+          return grapheme;
+        }
+
+        return paletteFns[i++ % paletteFns.length](grapheme);
+      })
       .join('');
   }) as RainbowFunction,
 };

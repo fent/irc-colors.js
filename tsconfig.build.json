@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "target": "es6",
+    "lib": ["es2022"],
     "declaration": true,
     "sourceMap": true,
     "outDir": "./dist"

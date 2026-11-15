@@ -121,6 +121,29 @@ describe('Rainbow with custom palette', () => {
     const res = rainbow('abc', ['green', 'blue']);
     assert.equal(res, '\x0303a\x03\x0312b\x03\x0303c\x03');
   });
+
+  it('keeps surrogate pairs and combining marks intact', () => {
+    assert.equal(
+      rainbow('a😀e\u0301b'),
+      '\x0304a\x03\x0307😀\x03\x0308e\u0301\x03\x0303b\x03',
+    );
+  });
+
+  it('rejects an empty palette', () => {
+    assert.throws(() => rainbow('abc', []), /palette/);
+  });
+
+  it('rejects unknown palette colors', () => {
+    assert.throws(() => rainbow('abc', ['nope']), /nope/);
+  });
+
+  it('validates palette entries that the string never reaches', () => {
+    assert.throws(() => rainbow('a', ['red', 'nope']), /nope/);
+  });
+
+  it('rejects palette entries that are not foreground colors', () => {
+    assert.throws(() => rainbow('a', ['bgred']), /bgred/);
+  });
 });
 
 describe('Strip color codes with literal commas', () => {
