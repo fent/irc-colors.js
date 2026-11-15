@@ -123,6 +123,39 @@ describe('Rainbow with custom palette', () => {
   });
 });
 
+describe('Strip color codes with literal commas', () => {
+  it('keeps a comma after a color code without a background', () => {
+    assert.equal(
+      stripColors(`${red('Warning')}, disk full`),
+      'Warning, disk full',
+    );
+  });
+
+  it('keeps a leading comma in colored text', () => {
+    assert.equal(stripColors(red(', hello')), ', hello');
+  });
+
+  it('keeps a comma after a bare color reset', () => {
+    assert.equal(stripColors('\x03,05x'), ',05x');
+  });
+
+  it('keeps a comma after a foreground color with zero-width bold', () => {
+    assert.equal(stripColors('\x0304\x02\x02, hello\x03'), ', hello');
+  });
+
+  it('still strips a background color', () => {
+    assert.equal(stripColors('\x0304,05x\x03'), 'x');
+    assert.equal(stripColors('\x0312,3x\x03'), 'x');
+  });
+
+  it('keeps literal commas when stripping colors and style', () => {
+    assert.equal(
+      stripColorsAndStyle(`${bold(red('Warning'))}, disk full`),
+      'Warning, disk full',
+    );
+  });
+});
+
 describe('Named and CJS exports', () => {
   it('supports direct named function calls and static chaining', () => {
     assert.equal(red('hi'), '\x0304hi\x03');

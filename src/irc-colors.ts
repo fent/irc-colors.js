@@ -145,6 +145,9 @@ const colorChar = '\x03';
 const zeroWidthBold = styles.bold + styles.bold;
 const leadingCommaDigitPattern = /^,\d/;
 const colorCodeStr = new RegExp(`^${colorChar}\\d\\d`);
+// A color code is `\x03<fg>,<bg>` where each of fg and bg is 1-2 digits.
+// The optional zero-width bold pair protects a literal leading ",\d".
+const colorCodePattern = /\x03(\d{1,2}(,\d{1,2})?)?(\x02\x02)?/g;
 
 const allColors: Record<Category, string[]> = {
   fg: [],
@@ -239,7 +242,7 @@ for (const extra of Object.keys(custom) as (keyof typeof custom)[]) {
 // Extras.
 const extras: Record<ExtraName, ColorFunction> = {
   stripColors: ((str: string) =>
-    str.replace(/\x03\d{0,2}(,\d{0,2}|\x02\x02)?/g, '')) as ColorFunction,
+    str.replace(colorCodePattern, '')) as ColorFunction,
 
   stripStyle: ((str: string) => {
     const delimiterStack: StylePosition[] = [];
