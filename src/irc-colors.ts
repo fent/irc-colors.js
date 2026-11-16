@@ -249,7 +249,7 @@ const custom = {
     let i = 0;
     return splitGraphemes(str)
       .map((grapheme) => {
-        if (grapheme === ' ') {
+        if (/\s/.test(grapheme)) {
           return grapheme;
         }
 

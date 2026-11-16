@@ -129,6 +129,13 @@ describe('Rainbow with custom palette', () => {
     );
   });
 
+  it('leaves all whitespace uncolored', () => {
+    assert.equal(
+      rainbow('a\tb\nc\u00a0d'),
+      '\x0304a\x03\t\x0307b\x03\n\x0308c\x03\u00a0\x0303d\x03',
+    );
+  });
+
   it('rejects an empty palette', () => {
     assert.throws(() => rainbow('abc', []), /palette/);
   });
